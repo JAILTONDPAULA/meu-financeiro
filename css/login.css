@@ -1,0 +1,43 @@
+@font-face{
+    src: url('../fonts/BlackRocker.ttf');
+    font-family: padrao;
+}
+body{
+    background: #0F97F7;
+}
+#id_sectionlogin{
+    position: fixed;
+    display: flex;
+    top: 0; left: 0;
+    width:  100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#id_sectionlogin>form{
+    flex-basis: 20%;
+    align-self: center;
+}
+#id_sectionlogin form>h1{
+    font-family: padrao;
+    font-size: 1.8em;
+    text-align: center;
+    color: #fff;
+}
+#id_sectionlogin form>button{
+    background: #3C8D2F;
+    border-radius: 3px;
+    border:none;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+#id_sectionlogin form>button:hover{
+    background: #43D92B;
+}
+@media(max-width: 548px){
+    #id_sectionlogin>form{
+        flex-basis: 95%;
+        align-self: center;
+    }
+}
