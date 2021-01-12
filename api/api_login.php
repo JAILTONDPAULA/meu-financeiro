@@ -3,6 +3,7 @@
     $data = date_create();
     $data = date_format($data,'d');
     session_name(md5($data.'segurança_php'.$_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR']));
+    session_start();
 
     if(isset($_POST['nm_login'])){
         $_SESSION['server']   = 'localhost';
@@ -27,17 +28,23 @@
                 echo(json_encode($retuns));
            }
            else{
-               $select = "select * from ".$_SESSION['db'].".tb_login where login= '".$_SESSION['login']."'";
+               $select = "select * from ".$_SESSION['db'].".tb_login where login= '".$_SESSION['login']."' and status = 'A'";
 //               echo($select);
                $consultar = mysqli_query($conexao,$select);
-               if(!$consultar){
+               if(!$consultar or $consultar->num_rows == 0){
                     $retuns['error'] = true;
                     $retuns['msg']   = 'permição ao sistema não foi iniciada como esperada-COD:003BE';
                     $retuns['cod']   = mysqli_error($conexao);
                     echo(json_encode($retuns));
                }
                else{
-                   echo(json_encode(mysqli_fetch_object($consultar)));
+                   $retorno = mysqli_fetch_object($consultar);
+                   $_SESSION['nivel_fin'] = $retorno->nivel;
+                   $_SESSION['login_fin'] = $retorno->login;
+                   $retuns['error'] = false;
+                   $retuns['msg']   = 'Acesso ok-COD:004BE';
+                   $retuns['cod']   = '1995BE';
+                   echo(json_encode($retuns));
                }
 
            }

@@ -1,0 +1,56 @@
+@font-face{
+    src: url('../../fonts/BlackRocker.ttf');
+    font-family: padrao;
+}
+@font-face{
+    src: url('../../fonts/Anton-Regular.ttf');
+    font-family: padrao-dois;
+}
+body{
+    background: #0F97F7;
+}
+/*================================================*/
+/*Menu sistema====================================*/
+/*================================================*/
+#navagacao{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px 15px;
+    background: #fff;
+}
+#navagacao>*{
+    align-self: center;
+    margin: 0;
+}
+#navagacao h1{
+    font-family: padrao;
+}
+#navagacao h5{
+    font-family: padrao-dois;
+    margin: 0;
+}
+#navagacao p{
+    font-weight: 700;
+    margin: 0;
+}
+#id_sair{
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 3px 10px;
+    text-align: right;
+}
+#id_sair:hover{
+    background: #eee;
+}
+@media(max-width: 548px){
+    #navagacao>*{
+        flex-basis: 70%;
+        font-size: 1.6em;
+    }    
+    #id_sair{
+        flex-basis: 29%;
+        font-size: 1em;
+    }    
+}
