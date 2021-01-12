@@ -8,15 +8,12 @@ function validarLogin(form){
     $.ajax({
         data: $('#id_formulariologin').serialize(),
         type: 'post',
-        url: 'api/login.php',
+        url: 'api/api_login.php',
         dataType: 'json',
         success: (retorno)=>{
             if(retorno.error){
                 $('#id_alerta p').text(retorno.msg)
                 $('#id_alerta').css({display: 'flex'})
-            }
-            else{
-                
             }
         },
         error: (retorno)=>{
