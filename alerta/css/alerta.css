@@ -32,3 +32,56 @@
         flex-basis: 90%;
     }
 }
+/*===============================================*/
+/*======Bloco multi escolha======================*/
+/*===============================================*/
+#id_multi{
+    position: fixed;
+    display: none;
+/*    display: flex;*/
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: space-evenly;
+    z-index: 1;
+}
+#id_multi>div{
+    padding: 10px;
+    background: #fff;
+    border-radius: 3px;
+    align-self: center;
+    text-align: center;
+    flex-basis: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#id_multi>div>p{
+    flex-basis: 100%;
+}
+#id_multi>div>button{
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 3px;
+    border: none;
+    flex-basis: 35%;
+    
+}
+#id_multi>div>button:nth-child(2){
+    background: #CEB70F;
+}
+#id_multi>div>button:nth-child(2):hover{
+    background: #F0D931;
+}
+#id_multi>div>button:nth-child(3){
+    background: #C00012;
+}
+#id_multi>div>button:nth-child(3):hover{
+    background: #FB152B;
+}
+@media(max-width: 548px){
+    #id_multi>div{
+        flex-basis: 90%;
+    }
+}

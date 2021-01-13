@@ -6,3 +6,4 @@
         <p>Sair</p>
     </div>
 </nav>
+<script src="../menu/js/navbar.js"></script>
