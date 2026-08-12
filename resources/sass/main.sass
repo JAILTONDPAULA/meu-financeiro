@@ -1,0 +1,45 @@
+@use 'colors' as *
+@use 'inputGroup' as *
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+body
+	font-family: 'Poppins', sans-serif
+
+code, pre
+	font-family: 'Roboto Mono', monospace
+@keyframes loading
+	0%
+		transform: rotate(0deg)
+	100%
+		transform: rotate(360deg)
+.background
+	position: fixed
+	top: 0
+	left: 0
+	width: 100vw
+	height: 100dvh
+	background: linear-gradient(135deg, var(--primary-100), var(--primary-300))
+	z-index: -1
+
+	>div
+		position: absolute
+		width: 350px
+		height: 350px
+		border-radius: 16px
+		background: linear-gradient(135deg, var(--primary-100), var(--primary-300))
+		opacity: 0.5
+		animation: loading 20s linear infinite
+		&:nth-child(1)
+			top: -100px
+			left: -100px
+		&:nth-child(2)
+			bottom: -100px
+			right: -100px
+		&:nth-child(3)
+			top: -100px
+			right: -100px
+

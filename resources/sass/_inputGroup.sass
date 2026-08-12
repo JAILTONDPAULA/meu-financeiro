@@ -1,0 +1,70 @@
+.input-group
+    display: flex
+    flex-direction: column
+
+    label:nth-child(1)
+        text-transform: lowercase
+        font-size: 0.75rem
+        font-weight: 800
+        color: var(--gray-600)
+        letter-spacing: 1.5px
+        user-select: none
+
+    input, select
+        outline: none
+        border: none
+        border-bottom: 1px solid var(--gray-300)
+        height: 35px
+        background: var(--gray-100)
+        border-radius: 4px 4px 0 0
+        padding: 0 0.5rem
+        font-family: 'Poppins', sans-serif
+        transition: border-color 0.15s ease, background-color 0.15s ease
+
+        &:focus
+            border-bottom-color: var(--primary-500)
+            background: var(--primary-50)
+
+        &:user-invalid
+            border-bottom-color: var(--red-500)
+            background: var(--red-50)
+
+    &.center
+        input, select
+            text-align: center
+
+    &.button-left
+        position: relative
+
+        input
+            padding-right: 35px
+
+        label:has(input[type="checkbox"])
+            width: 35px
+            height: 35px
+            display: flex
+            justify-content: center
+            align-items: center
+            border-bottom: 1px solid var(--gray-300)
+            position: absolute
+            right: 0
+            bottom: 0
+            color: var(--gray-500)
+            cursor: pointer
+            transition: color 0.15s ease
+
+            input[type="checkbox"]
+                display: none
+
+            &:hover
+                color: var(--primary-500)
+
+            &:has(input[type="checkbox"]:checked)
+                color: var(--red-500)
+                &::after
+                    content: ""
+                    position: absolute
+                    height: 2px
+                    width: 55%
+                    background: var(--red-500)
+                    transform: rotate(45deg)

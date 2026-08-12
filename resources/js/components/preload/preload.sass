@@ -1,0 +1,83 @@
+@keyframes preload-text-up
+    from
+        transform: translateY(24px)
+        opacity: 0
+    to
+        transform: translateY(0)
+        opacity: 1
+
+@keyframes preload-bar
+    0%
+        left: -40%
+        width: 40%
+    50%
+        width: 60%
+    100%
+        left: 100%
+        width: 40%
+
+@keyframes preload-fade-out
+    to
+        opacity: 0
+
+.preload
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100dvh
+    z-index: 10
+    display: flex
+    justify-content: center
+    align-items: center
+    overflow: hidden
+
+    &.is-leaving
+        animation: preload-fade-out 0.3s ease forwards
+
+    .content
+        position: relative
+        z-index: 1
+        display: grid
+        gap: 1.5rem
+        justify-items: center
+        text-align: center
+
+        .header
+            display: grid
+            gap: 0.25rem
+
+            h1
+                font-size: 1.5rem
+                font-weight: 900
+                color: var(--primary-900)
+                letter-spacing: 1px
+                line-height: 1
+                text-transform: uppercase
+                font-family: 'Poppins', sans-serif
+                animation: preload-text-up 0.5s ease both
+
+                @media (max-width: 480px)
+                    font-size: 1.2rem
+
+            p
+                font-size: 0.875rem
+                color: var(--primary-700)
+                line-height: 1
+                animation: preload-text-up 0.5s ease 0.15s both
+
+        .loading-bar
+            width: 200px
+            height: 4px
+            border-radius: 2px
+            background: rgba(255, 255, 255, 0.4)
+            overflow: hidden
+            position: relative
+
+            span
+                position: absolute
+                top: 0
+                height: 100%
+                border-radius: 2px
+                background: var(--primary-500)
+                animation: preload-bar 1.2s ease-in-out infinite

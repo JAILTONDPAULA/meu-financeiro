@@ -1,0 +1,10 @@
+import '../sass/main.sass';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import $ from 'jquery';
+import './components/preload/preload.js';
+import './components/toast/toast.js';
+import './components/menu/menu.js';
+import './helpers/request/request.js';
+window.$ = window.jQuery = $;
+Menu.events.init();
+Preload.create();
