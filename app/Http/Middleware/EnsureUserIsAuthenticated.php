@@ -36,6 +36,6 @@ class EnsureUserIsAuthenticated
             return response('Não autenticado.', 401);
         }
 
-        return redirect()->guest(route('login'));
+        return redirect()->guest('/login');
     }
 }

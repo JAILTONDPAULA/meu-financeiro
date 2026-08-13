@@ -9,7 +9,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/pages/login.js',
                 'resources/js/pages/home.js',
-                'resources/js/pages/movimentacoes.js'
+                'resources/js/pages/movimentacoes.js',
+                'resources/js/pages/historico-movimentacoes.js'
             ],
             refresh: true,
         }),

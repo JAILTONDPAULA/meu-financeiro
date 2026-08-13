@@ -1,0 +1,132 @@
+@keyframes dialog-in
+    from
+        opacity: 0
+    to
+        opacity: 1
+
+@keyframes dialog-out
+    to
+        opacity: 0
+
+@keyframes dialog-form-in
+    from
+        transform: translateY(14px) scale(.96)
+        opacity: 0
+    to
+        transform: translateY(0) scale(1)
+        opacity: 1
+
+.dialog
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 9
+    width: 100vw
+    height: 100dvh
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 1rem
+    background: rgba(15, 23, 42, .45)
+    animation: dialog-in .2s ease both
+
+    &.is-closing
+        animation: dialog-out .2s ease forwards
+
+    form
+        min-width: 350px
+        max-height: calc(100dvh - 2rem)
+        display: flex
+        flex-direction: column
+        border-radius: 14px
+        background: white
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .2)
+        overflow: hidden
+        animation: dialog-form-in .2s ease both
+
+        @media (max-width: 420px)
+            min-width: 0
+            width: 100%
+
+        header
+            display: flex
+            align-items: center
+            justify-content: space-between
+            gap: .75rem
+            padding: 1rem
+            border-bottom: 1px solid var(--bluegray-100)
+
+            h2
+                font-size: 1rem
+                font-weight: 600
+                color: var(--primary-900)
+                font-family: 'Poppins', sans-serif
+
+            .fechar
+                display: flex
+                justify-content: center
+                align-items: center
+                flex-shrink: 0
+                width: 26px
+                height: 26px
+                border: none
+                border-radius: 8px
+                background: transparent
+                color: var(--bluegray-400)
+                font-size: .9rem
+                cursor: pointer
+                transition: background .15s ease, color .15s ease
+
+                &:hover
+                    background: var(--bluegray-100)
+                    color: var(--bluegray-700)
+
+        .body
+            padding: 1rem
+            flex: 1
+            min-height: 0
+            overflow-y: auto
+            font-size: .875rem
+            color: var(--bluegray-700)
+
+        footer
+            display: flex
+            justify-content: flex-end
+            gap: .5rem
+            padding: 1rem
+            border-top: 1px solid var(--bluegray-100)
+
+            button
+                padding: .5rem 1rem
+                border: none
+                border-radius: 10px
+                font-size: .85rem
+                font-weight: 500
+                font-family: 'Poppins', sans-serif
+                cursor: pointer
+                transition: filter .15s ease, background .15s ease
+
+                &:hover
+                    filter: brightness(.95)
+
+            .fechar
+                background: var(--bluegray-100)
+                color: var(--bluegray-700)
+
+            .enviar
+                background: linear-gradient(135deg, var(--primary-400), var(--primary-700))
+                color: white
+
+    &.dialog-error
+
+        form
+
+            header
+
+                h2
+                    color: var(--red-700)
+
+            footer
+
+                .enviar
+                    background: linear-gradient(135deg, var(--red-400), var(--red-600))

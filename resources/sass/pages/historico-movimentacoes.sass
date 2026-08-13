@@ -1,0 +1,385 @@
+@keyframes registro-entrando
+    from
+        transform: translateX(-28px)
+        opacity: 0
+    to
+        transform: translateX(0)
+        opacity: 1
+
+// Reverso do cadastro: sai pelo lado para onde foi arrastado.
+@keyframes registro-saindo
+    to
+        transform: translateX(60px)
+        opacity: 0
+
+@keyframes gravando
+    0%
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, .5)
+    100%
+        box-shadow: 0 0 0 18px rgba(239, 68, 68, 0)
+
+// Corpo do diálogo de exclusão: o componente só entrega o esqueleto.
+#dialog-excluir-movimentacao
+
+    .body
+
+        p
+            line-height: 1.5
+
+        .resumo
+            display: flex
+            flex-direction: column
+            gap: .15rem
+            margin-top: .75rem
+            padding: .7rem .8rem
+            border-radius: 10px
+            background: var(--bluegray-50)
+
+            strong
+                font-size: .95rem
+                color: var(--bluegray-800)
+
+            span
+                font-size: .8rem
+                color: var(--bluegray-500)
+                font-family: 'Roboto Mono', monospace
+
+        .aviso
+            margin-top: .75rem
+            padding: .5rem .7rem
+            border-radius: 8px
+            background: var(--red-50)
+            color: var(--red-700)
+            font-size: .8rem
+
+.containerpage
+    padding: 1.5rem
+    display: grid
+    grid-template-rows: auto auto 1fr
+    // Trava na viewport (menos os 50px do menu sticky) para que título e
+    // microfone nunca rolem: quem rola é só a lista do histórico.
+    height: calc(100dvh - 50px)
+    overflow: hidden
+
+    @media (max-width: 480px)
+        padding: .8rem
+
+    @media (max-width: 768px)
+        grid-template-rows: auto 1fr auto
+
+    .titulo
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        gap: .5rem
+
+        .icon
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-shrink: 0
+            width: 30px
+            height: 30px
+            border-radius: 12px
+            background: linear-gradient(135deg, var(--primary-400), var(--primary-700))
+            color: white
+            font-size: 1rem
+            text-decoration: none
+            cursor: pointer
+
+        h1
+            font-size: 1.25rem
+            font-weight: 700
+            color: var(--primary-900)
+            font-family: 'Poppins', sans-serif
+
+    .adicionar
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        gap: .8rem
+        padding: 1.5rem 0
+
+        @media (max-width: 768px)
+            order: 3
+            padding: 1rem 0 .5rem
+
+        .microfone
+            touch-action: none
+            user-select: none
+            -webkit-user-select: none
+            -webkit-touch-callout: none
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-shrink: 0
+            width: 64px
+            height: 64px
+            border: none
+            border-radius: 50%
+            background: linear-gradient(135deg, var(--primary-400), var(--primary-700))
+            color: white
+            font-size: 1.5rem
+            cursor: pointer
+            transition: transform .2s ease
+
+            @media (hover: hover)
+                &:hover
+                    transform: scale(1.05)
+
+            &.gravando
+                transform: scale(1.08)
+                background: linear-gradient(135deg, var(--red-400), var(--red-600))
+                animation: gravando 1.5s ease-out infinite
+
+        .status
+            font-size: .85rem
+            color: var(--bluegray-500)
+            text-align: center
+            font-family: 'Poppins', sans-serif
+
+    .historico
+        display: flex
+        flex-direction: column
+        gap: 1rem
+        padding-top: 1rem
+        min-height: 0
+
+        @media (max-width: 768px)
+            order: 2
+
+        .filtro
+            display: flex
+            flex-direction: column
+            align-items: center
+            gap: .6rem
+            flex-shrink: 0
+
+            .tipo
+                display: flex
+                gap: .3rem
+                padding: .25rem
+                border-radius: 12px
+                background: var(--primary-50)
+
+                .opcao
+                    cursor: pointer
+
+                    input
+                        position: absolute
+                        opacity: 0
+                        pointer-events: none
+
+                    span
+                        display: block
+                        padding: .4rem 1rem
+                        border-radius: 10px
+                        font-size: .85rem
+                        font-weight: 500
+                        color: var(--primary-700)
+                        transition: background .2s ease, color .2s ease
+
+                    input:checked + span
+                        background: linear-gradient(135deg, var(--primary-400), var(--primary-700))
+                        color: white
+
+            .periodo
+                position: relative
+                display: flex
+                align-items: center
+                gap: .4rem
+                cursor: pointer
+                color: var(--primary-900)
+
+                // Fica por cima do rótulo: o toque abre o seletor nativo.
+                input
+                    position: absolute
+                    top: 0
+                    left: 0
+                    width: 100%
+                    height: 100%
+                    opacity: 0
+                    cursor: pointer
+
+                .rotulo
+                    font-size: 1rem
+                    font-weight: 700
+                    letter-spacing: .02em
+
+                i
+                    font-size: .7rem
+                    color: var(--primary-500)
+
+        .registros
+            display: flex
+            flex-direction: column
+            gap: .8rem
+            min-height: 0
+            overflow-y: auto
+            // Segura o registro arrastado sem abrir barra horizontal.
+            overflow-x: hidden
+            padding-right: .35rem
+            scrollbar-width: thin
+            scrollbar-color: var(--bluegray-300) transparent
+
+            &::-webkit-scrollbar
+                width: 6px
+
+            &::-webkit-scrollbar-track
+                background: transparent
+
+            &::-webkit-scrollbar-thumb
+                border-radius: 3px
+                background: var(--bluegray-300)
+
+                &:hover
+                    background: var(--bluegray-400)
+
+            .vazio
+                padding: 2rem 1rem
+                text-align: center
+                font-size: .85rem
+                color: var(--bluegray-400)
+
+            .dia
+                border-radius: 14px
+                background: white
+                box-shadow: 0 1px 4px rgba(0, 0, 0, .06)
+                // Sem overflow: hidden — ele recortava o registro arrastado.
+                // Os cantos arredondados ficam por conta do header e do
+                // último registro.
+
+                header
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    gap: .5rem
+                    padding: .7rem .9rem
+                    border-radius: 14px 14px 0 0
+                    background: var(--primary-50)
+
+                    .data
+                        display: flex
+                        flex-direction: column
+
+                        strong
+                            font-size: .85rem
+                            color: var(--primary-900)
+
+                        span
+                            font-size: .75rem
+                            color: var(--bluegray-500)
+
+                    .totais
+                        display: flex
+                        align-items: center
+                        gap: .7rem
+                        font-size: .75rem
+                        font-family: 'Roboto Mono', monospace
+
+                        @media (max-width: 480px)
+                            flex-direction: column
+                            align-items: flex-end
+                            gap: .1rem
+
+                        .faturado
+                            color: var(--green-600)
+
+                        .gasto
+                            color: var(--red-500)
+
+                        .saldo
+                            font-weight: 700
+                            color: var(--primary-900)
+
+                            &.negativo
+                                color: var(--red-600)
+
+                ul
+                    list-style: none
+
+                    .registro
+                        position: relative
+                        display: flex
+                        align-items: center
+                        gap: .7rem
+                        padding: .7rem .9rem
+                        border-top: 1px solid var(--bluegray-100)
+                        background: white
+                        // Libera a rolagem vertical e reserva o gesto horizontal.
+                        touch-action: pan-y
+                        user-select: none
+                        -webkit-user-select: none
+                        transition: transform .2s ease
+
+                        // Enquanto o dedo conduz, o transform é do JS.
+                        // Sem animação no estado base: fill-mode "both" venceria
+                        // o estilo inline e travaria o item na posição zero.
+                        &.arrastando
+                            transition: none
+
+                        &.saindo
+                            animation: registro-saindo .25s ease forwards
+
+                        &.entrando
+                            animation: registro-entrando .35s ease both
+
+                        &:last-child
+                            border-radius: 0 0 14px 14px
+
+                        .icone
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            flex-shrink: 0
+                            width: 34px
+                            height: 34px
+                            border-radius: 10px
+                            background: var(--primary-50)
+                            color: var(--primary-600)
+                            font-size: .85rem
+
+                        .descricao
+                            display: flex
+                            flex-direction: column
+                            gap: .2rem
+                            flex: 1
+                            min-width: 0
+
+                            strong
+                                font-size: .9rem
+                                font-weight: 500
+                                color: var(--bluegray-800)
+
+                            .tags
+                                display: flex
+                                flex-wrap: wrap
+                                gap: .3rem
+
+                                .tag
+                                    padding: .1rem .4rem
+                                    border-radius: 6px
+                                    background: var(--bluegray-100)
+                                    color: var(--bluegray-600)
+                                    font-size: .65rem
+
+                                    &.credito
+                                        background: var(--purple-100)
+                                        color: var(--purple-700)
+
+                                    &.parcela
+                                        background: var(--orange-100)
+                                        color: var(--orange-700)
+
+                        .valor
+                            flex-shrink: 0
+                            font-size: .9rem
+                            font-weight: 700
+                            font-family: 'Roboto Mono', monospace
+
+                            &.despesa
+                                color: var(--red-500)
+
+                            &.faturamento
+                                color: var(--green-600)

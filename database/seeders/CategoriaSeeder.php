@@ -30,6 +30,9 @@ class CategoriaSeeder extends Seeder
             'Comigo' => 'user',
             'Estudo' => 'graduation-cap',
             'Viagens' => 'plane',
+            'Combustível' => 'gas-pump',
+            'Pagamento' => 'money-bill-wave',
+            'Casa' => 'house',
         ];
 
         foreach ($categorias as $descricao => $icone) {

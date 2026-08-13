@@ -1,0 +1,36 @@
+@keyframes iframe-in
+    from
+        transform: translateX(-100%)
+        opacity: 0
+    to
+        transform: translateX(0)
+        opacity: 1
+
+@keyframes iframe-out
+    from
+        transform: translateX(0)
+        opacity: 1
+    to
+        transform: translateX(-100%)
+        opacity: 0
+
+.iframe
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100dvh
+    z-index: 9
+    background: white
+    overflow: hidden
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15)
+    animation: iframe-in 0.3s ease both
+
+    &.is-closing
+        animation: iframe-out 0.3s ease both
+
+    iframe
+        display: block
+        width: 100%
+        height: 100%
+        border: none

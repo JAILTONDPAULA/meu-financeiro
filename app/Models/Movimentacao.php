@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Movimentacao extends Model
 {
+    /**
+     * A pluralização automática do Laravel geraria "movimentacaos".
+     */
+    protected $table = 'movimentacoes';
+
     protected $fillable = [
         'user_id',
         'categoria_id',

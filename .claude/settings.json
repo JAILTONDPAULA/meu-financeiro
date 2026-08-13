@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(resources/js/pages/**)",
+      "Edit(resources/js/pages/**)",
+      "Write(resources/sass/pages/**)",
+      "Edit(resources/sass/pages/**)",
+      "Write(resources/views/pages/**)",
+      "Edit(resources/views/pages/**)",
+      "Edit(vite.config.js)",
+      "Edit(routes/web.php)",
+      "PowerShell(& C:\\\\platform-tools\\\\adb.exe devices -l)",
+      "PowerShell(& C:\\\\platform-tools\\\\adb.exe reverse tcp:8001 tcp:8001)",
+      "PowerShell(& C:\\\\platform-tools\\\\adb.exe reverse tcp:5173 tcp:5173)",
+      "PowerShell(& C:\\\\platform-tools\\\\adb.exe reverse --list)",
+      "PowerShell(php \"C:\\\\Users\\\\jailt\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-jailt-Documents-PROJETOS--laravel-meufinanceiro\\\\2258c1ee-3cf4-4efb-a401-9cc6f50219d8\\\\scratchpad\\\\check_servico.php\")",
+      "PowerShell(\"php.ini alterado em : \" + \\(Get-Item C:\\\\php826\\\\php.ini\\).LastWriteTime; Get-Process php -ErrorAction SilentlyContinue | ForEach-Object { \"processo php $\\($_.Id\\) iniciado em: $\\($_.StartTime\\)\" })",
+      "PowerShell(Get-NetTCPConnection -State Listen -LocalPort 8001 | Select-Object -First 1 -ExpandProperty OwningProcess | ForEach-Object { $p = Get-Process -Id $_; \"porta 8001 atendida pelo PID $\\($p.Id\\), iniciado em $\\($p.StartTime\\)\"; \"linha de comando:\"; \\(Get-CimInstance Win32_Process -Filter \"ProcessId = $\\($p.Id\\)\"\\).CommandLine })",
+      "PowerShell(php \"C:\\\\Users\\\\jailt\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-jailt-Documents-PROJETOS--laravel-meufinanceiro\\\\2258c1ee-3cf4-4efb-a401-9cc6f50219d8\\\\scratchpad\\\\check_custo.php\")",
+      "PowerShell(php -l app/Http/Controllers/Api/MovimentacaoController.php)",
+      "PowerShell(php -l app/Services/MovimentacaoService.php)",
+      "PowerShell(php artisan route:list --path=api/movimentacoes)",
+      "PowerShell(php \"C:\\\\Users\\\\jailt\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-jailt-Documents-PROJETOS--laravel-meufinanceiro\\\\2258c1ee-3cf4-4efb-a401-9cc6f50219d8\\\\scratchpad\\\\check_listar.php\")",
+      "PowerShell(php \"C:\\\\Users\\\\jailt\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-jailt-Documents-PROJETOS--laravel-meufinanceiro\\\\2258c1ee-3cf4-4efb-a401-9cc6f50219d8\\\\scratchpad\\\\check_categorias.php\")",
+      "PowerShell(php \"C:\\\\Users\\\\jailt\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-jailt-Documents-PROJETOS--laravel-meufinanceiro\\\\2258c1ee-3cf4-4efb-a401-9cc6f50219d8\\\\scratchpad\\\\check_excluir.php\")",
+      "PowerShell(php artisan db:seed --class=CategoriaSeeder --no-interaction)"
+    ]
+  }
+}

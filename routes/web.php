@@ -17,4 +17,5 @@ Route::middleware('authenticated')->group(function () {
     // Tela de teste: sem sessão autenticada, cai em /login.
     Route::get('/', fn() => view('pages.home'))->name('home');
     Route::get('/movimentacoes', fn() => view('pages.movimentacoes'))->name('movimentacoes');
+    Route::get('/historico-movimentacoes', fn() => view('pages.historico-movimentacoes'))->name('historico-movimentacoes');
 });
